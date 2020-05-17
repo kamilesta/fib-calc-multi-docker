@@ -20,3 +20,16 @@ after_success:
   - docker push fib-calc-server
   - docker push fib-calc-worker
 
+
+deploy:
+  provider: elasticbeanstalk
+  region: europe
+  app: fib-calc-docker
+  env: fib-calc-docker-env
+  bucket_name: elasticbeanstalk-bucker-name
+  bucket_path: fib-calc
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
